@@ -7,6 +7,13 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class CupRespawner : MonoBehaviour
 {
+    public enum SodaFlavor
+    {
+        Lemon,
+        Orange,
+        Passion
+    }
+
     [Header("References")]
     [Tooltip("Back-compat: single cup reference. If 'cups' is filled, this can be left empty.")]
     public GameObject cup;
@@ -27,6 +34,14 @@ public class CupRespawner : MonoBehaviour
 
     [Tooltip("State to apply on respawn.")]
     public string respawnState = "Empty";
+
+    [Header("Soda Flavor Selection")]
+    [Tooltip("Used by ApplySelectedFlavorUnmixed() to decide which '_Unmixed' state to set.")]
+    public SodaFlavor selectedSodaFlavor = SodaFlavor.Lemon;
+
+    [Header("Mix (optional helper)")]
+    [Tooltip("Optional: assign your Timer_Mix here so the Mix button can call MixIfReady() without ConditionalTriggers.")]
+    public TimerTrigger mixTimer;
 
     [Header("Physics")]
     [Tooltip("If true, clears linear/angular velocity when respawning.")]
@@ -98,6 +113,85 @@ public class CupRespawner : MonoBehaviour
     public void SelectCup0() => SelectCupIndex(0);
     public void SelectCup1() => SelectCupIndex(1);
     public void SelectCup2() => SelectCupIndex(2);
+
+    // --- Flavor selection helpers (for a single shared Flavor timer) ---
+    public void SelectSodaFlavorLemon() => selectedSodaFlavor = SodaFlavor.Lemon;
+    public void SelectSodaFlavorOrange() => selectedSodaFlavor = SodaFlavor.Orange;
+    public void SelectSodaFlavorPassion() => selectedSodaFlavor = SodaFlavor.Passion;
+
+    /// <summary>
+    /// Sets the selected container to the corresponding Soda_*_Unmixed state based on selectedSodaFlavor.
+    /// Intended to be called at the end of a single shared Flavor timer.
+    /// </summary>
+    public void ApplySelectedSodaFlavorUnmixed()
+    {
+        switch (selectedSodaFlavor)
+        {
+            case SodaFlavor.Orange:
+                SetSelectedState("Soda_Orange_Unmixed");
+                break;
+            case SodaFlavor.Passion:
+                SetSelectedState("Soda_Passion_Unmixed");
+                break;
+            default:
+                SetSelectedState("Soda_Lemon_Unmixed");
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Sets the selected container to the corresponding final Soda_* state based on selectedSodaFlavor.
+    /// Intended to be called at the end of a single shared Mix timer.
+    /// </summary>
+    public void ApplySelectedSodaFinal()
+    {
+        switch (selectedSodaFlavor)
+        {
+            case SodaFlavor.Orange:
+                SetSelectedState("Soda_Orange");
+                break;
+            case SodaFlavor.Passion:
+                SetSelectedState("Soda_Passion");
+                break;
+            default:
+                SetSelectedState("Soda_Lemon");
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Optional convenience for a single Mix button:
+    /// - Checks the selected container's current state
+    /// - If it's Soda_*_Unmixed, derives the flavor and starts mixTimer (Stop+Play)
+    /// This removes the need for ConditionalTrigger gating/selection logic for Mix.
+    /// </summary>
+    public void MixIfReady()
+    {
+        if (!enabled) return;
+        if (mixTimer == null) return;
+
+        var active = CurrentCup;
+        if (active == null) return;
+
+        var sm = active.GetComponent<StateMachine>();
+        if (sm == null) return;
+
+        string state = sm.CurrentState;
+        if (string.IsNullOrEmpty(state)) return;
+
+        // Derive flavor from the unmixed state name
+        if (state.Equals("Soda_Lemon_Unmixed", System.StringComparison.OrdinalIgnoreCase))
+            selectedSodaFlavor = SodaFlavor.Lemon;
+        else if (state.Equals("Soda_Orange_Unmixed", System.StringComparison.OrdinalIgnoreCase))
+            selectedSodaFlavor = SodaFlavor.Orange;
+        else if (state.Equals("Soda_Passion_Unmixed", System.StringComparison.OrdinalIgnoreCase))
+            selectedSodaFlavor = SodaFlavor.Passion;
+        else
+            return; // Not ready to mix
+
+        mixTimer.Stop();
+        mixTimer.Play();
+    }
 
     /// <summary>
     /// Teleports the cup to spawnLocation and resets its state.
