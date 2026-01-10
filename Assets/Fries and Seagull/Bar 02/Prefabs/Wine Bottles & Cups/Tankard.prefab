@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tankard
       objectReference: {fileID: 0}
+    - target: {fileID: 1267352256287839728, guid: 7dd5562a5ac82104d9f14275ba6a9f67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.171
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
