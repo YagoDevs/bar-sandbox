@@ -6738,7 +6738,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - delay: 2
+  - delay: 1.5
     unityEvent:
       m_PersistentCalls:
         m_Calls:

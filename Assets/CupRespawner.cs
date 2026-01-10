@@ -264,11 +264,11 @@ public class CupRespawner : MonoBehaviour
         var active = CurrentCup;
         if (active == null) return;
 
-        if (cupStateMachine == null)
-            cupStateMachine = active.GetComponent<StateMachine>();
-
-        if (cupStateMachine != null && !string.IsNullOrWhiteSpace(state))
-            cupStateMachine.SetState(state);
+        // Always resolve the StateMachine from the currently selected container.
+        // This avoids stale references when switching between Cup/Mug/Bottle.
+        var sm = active.GetComponent<StateMachine>();
+        if (sm != null && !string.IsNullOrWhiteSpace(state))
+            sm.SetState(state);
     }
 }
 
