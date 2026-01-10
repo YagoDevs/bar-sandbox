@@ -66,6 +66,23 @@ public class CupRespawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Returns the currently selected container GameObject (Cup/Mug/Bottle), or null.
+    /// Useful for UI/HUD scripts.
+    /// </summary>
+    public GameObject GetSelectedCup() => CurrentCup;
+
+    /// <summary>
+    /// Returns the current state string of the selected container's StateMachine, or "None".
+    /// </summary>
+    public string GetSelectedCupState()
+    {
+        var active = CurrentCup;
+        if (active == null) return "None";
+        var sm = active.GetComponent<StateMachine>();
+        return sm != null ? sm.CurrentState : "None";
+    }
+
     private void Awake()
     {
         RefreshCachedReferences();
