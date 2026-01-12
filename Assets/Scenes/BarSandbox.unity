@@ -2138,7 +2138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimerTrigger
   events:
-  - delay: 4
+  - delay: 2
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -2152,6 +2152,30 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1969526710}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1330441355}
+          m_TargetAssemblyTypeName: CupRespawner, Assembly-CSharp
+          m_MethodName: SetSelectedState
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Beer
             m_BoolArgument: 0
           m_CallState: 2
   mode: 0
@@ -4614,82 +4638,10 @@ MonoBehaviour:
   autoTrigger: 1
   onConditionsMet:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1263372204}
-        m_TargetAssemblyTypeName: MouseListener, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 518937933}
-        m_TargetAssemblyTypeName: MouseListener, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 578417645}
-        m_TargetAssemblyTypeName: MouseListener, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   onConditionsFailed:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1263372204}
-        m_TargetAssemblyTypeName: MouseListener, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 518937933}
-        m_TargetAssemblyTypeName: MouseListener, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 578417645}
-        m_TargetAssemblyTypeName: MouseListener, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   TimeToEvaluate: 0
   evaluationOrder: 0
   ProceedOrderOnResult: 2
@@ -25216,18 +25168,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 9089252606601513824}
-          m_TargetAssemblyTypeName: MouseListener, Assembly-CSharp
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
   mode: 0
   playbackSpeed: 1
   autoPlay: 0
@@ -25867,7 +25807,7 @@ GameObject:
   - component: {fileID: 1544971872}
   - component: {fileID: 1544971874}
   - component: {fileID: 1544971875}
-  - component: {fileID: 1544971873}
+  - component: {fileID: 1544971876}
   m_Layer: 0
   m_Name: BeerSocket
   m_TagString: Untagged
@@ -25890,105 +25830,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1243636820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1544971873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544971871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c156756d4c41441b80700523b0a4027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConditionalTrigger
-  conditions:
-  - conditionType: 6
-    value: 
-    negate: 1
-  conditionLogic: 0
-  autoTrigger: 0
-  onConditionsMet:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 591885328}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1122173242}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 532068980}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1533217724}
-        m_TargetAssemblyTypeName: TimerTrigger, Assembly-CSharp
-        m_MethodName: Stop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1533217724}
-        m_TargetAssemblyTypeName: TimerTrigger, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 9089252606601513824}
-        m_TargetAssemblyTypeName: MouseListener, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onConditionsFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  TimeToEvaluate: 0
-  evaluationOrder: 1
-  ProceedOrderOnResult: 2
 --- !u!65 &1544971874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26017,7 +25858,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544971871}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c156756d4c41441b80700523b0a4027, type: 3}
   m_Name: 
@@ -26100,6 +25941,48 @@ MonoBehaviour:
   TimeToEvaluate: 0
   evaluationOrder: 0
   ProceedOrderOnResult: 1
+--- !u!114 &1544971876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544971871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb41f9abe2ed44948a0ac639f58b197d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SocketButtonRouter
+  containerTag: Cup
+  cupRespawner: {fileID: 1330441355}
+  requireSelectedContainerInSocket: 1
+  requiredState: Empty
+  correctTimer: {fileID: 190441701}
+  spillFx: {fileID: 1122173242}
+  wetDecal: {fileID: 591885328}
+  spillAudio: {fileID: 532068980}
+  wetTimer: {fileID: 1533217724}
+  lemonRoute:
+    requiredState: 
+    correctTimer: {fileID: 0}
+    spillFx: {fileID: 0}
+    wetDecal: {fileID: 0}
+    spillAudio: {fileID: 0}
+    wetTimer: {fileID: 0}
+  orangeRoute:
+    requiredState: 
+    correctTimer: {fileID: 0}
+    spillFx: {fileID: 0}
+    wetDecal: {fileID: 0}
+    spillAudio: {fileID: 0}
+    wetTimer: {fileID: 0}
+  passionRoute:
+    requiredState: 
+    correctTimer: {fileID: 0}
+    spillFx: {fileID: 0}
+    wetDecal: {fileID: 0}
+    spillAudio: {fileID: 0}
+    wetTimer: {fileID: 0}
 --- !u!1 &1549868969
 GameObject:
   m_ObjectHideFlags: 0
@@ -40608,7 +40491,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d21a5fc6e126e45a3911717a2951cfb8, type: 2}
+  - {fileID: 2100000, guid: 4ab57ae0cfcda405c8bbb45772c995f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -51707,10 +51590,10 @@ MonoBehaviour:
   onMouseDownEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1544971875}
-        m_TargetAssemblyTypeName: ConditionalTrigger, Assembly-CSharp
-        m_MethodName: BeginEvaluation
-        m_Mode: 3
+      - m_Target: {fileID: 1544971876}
+        m_TargetAssemblyTypeName: SocketButtonRouter, Assembly-CSharp
+        m_MethodName: Press
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
