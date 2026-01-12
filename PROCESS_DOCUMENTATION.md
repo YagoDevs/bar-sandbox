@@ -347,5 +347,5 @@ The final version became more sandbox-readable and less brittle because the feed
 ---
 
 ## itch.io Link
-**Game link (itch.io)**: (paste link)
+**Game link (itch.io)**: https://yagophellipe.itch.io/sandbox-bar-game
 
