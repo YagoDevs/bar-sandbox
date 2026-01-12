@@ -23,6 +23,24 @@ The intended player experience is **curiosity + controlled chaos**:
 
 ---
 
+## Player creative freedom + main goal (assignment requirement)
+
+### Main goal (what the player is trying to do)
+The main goal is to **fulfill drink orders**:
+- Read the current request on the order sign.
+- Prepare the correct drink in a chosen container.
+- Deliver it to the customer’s delivery zone to trigger validation and feedback.
+
+### Creative freedom (what the player is free to do)
+The sandbox gives the player freedom in *how* to reach the goal:
+- **Choose different containers** (Cup / Mug / Bottle) for the same order.
+- **Physically manipulate** objects (grab, move, drop, misplace) rather than selecting from menus.
+- **Experiment with station sequences** (e.g., attempt flavor before water, mix too early, deliver wrong drink).
+- **Recover from mistakes** quickly using the wash station (reset to `Empty`).
+- **Misuse machines** (pressing buttons without a valid container) and observe consequences (spills).
+
+---
+
 ## How the sandbox is built (systems mindset)
 
 ### Key idea: “state is visible”
@@ -152,6 +170,20 @@ Although each rule is simple, the combination supports non-trivial play:
 - The wash station enables “try, fail, reset, retry” quickly.
 - Physical manipulation can cause accidental outcomes (dropping, misplacing, mixing timing, grabbing the wrong item).
 
+### Examples of unexpected combinations (assignment requirement)
+Unexpected outcomes come from consistent rules interacting:
+- **Wrong sequence**: pressing Flavor before Water does nothing useful (or causes a spill), teaching the process order through feedback.
+- **Wrong delivery**: delivering the wrong state triggers customer sadness + failure sound, encouraging correction via wash + retry.
+- **Container choice as a variable**: even if the drink state is correct, the player may pick different physical containers, which can change handling and accidents (dropping, missing the socket).
+- **Machine misuse**: pressing a machine without a valid container produces a spill instead of progress, creating playful “oops” moments.
+
+### Unpredictability (spills when a machine is used incorrectly)
+To introduce a controlled form of unpredictability (without relying on random outcomes), machines can be “used wrong”:
+- If the player presses a machine button **without a valid container placed in the socket**, the machine **spills liquid** instead of producing a drink.
+- This triggers **immediate feedback** (spill particles + a wet puddle decal + spill audio), and the mess **cleans itself after a short delay** via a timer.
+
+This creates playful moments (and small failures) that emerge naturally from player actions: the sandbox remains rule-consistent, but outcomes feel less scripted because misuse produces visible consequences.
+
 The result is **consistent emergence**: unpredictable moments arise from stable rules, not random scripted events.
 
 ---
@@ -228,6 +260,8 @@ These extensions were used to preserve the “no hardcoded single object” limi
 ## Playtests & iteration (how tests were executed and applied)
 This prototype was iterated through short, informal playtests focused on clarity of goals, interaction flow, and state readability.
 
+> **Assignment note**: the final submission should summarize results from **at least 10 people** and include **screenshots of what players did** (examples of play, failure, surprising moments).
+
 ### Playtest form link (Google Forms)
 Paste your Google Forms link here:
 
@@ -265,7 +299,6 @@ Early versions used mostly primitive shapes (cubes/cylinders) with minimal diffe
 - “I’m not sure what changed after pressing a button.”
 
 **Change applied**
-- Replaced/updated container visuals and added clearer liquid visuals per state.
 - Increased visual contrast between states (different colors/materials).
 - Added on-screen state HUD (state label) for clarity during testing.
 
@@ -290,17 +323,19 @@ Players enjoyed the process, but wanted clearer step feedback.
 
 **Change applied**
 - Added timed process sounds for water/flavor/mix steps.
-- Added explicit flavor variants (Lemon/Orange/Passion) and distinct visual states.
+- Added explicit flavor variants (Lemon/Orange/Passion).
 - Implemented a consistent “processing” state during timed steps.
 
-### Example playtest log (template)
-Below is a suggested table format you can paste into a separate doc or keep here. Replace with your real tester entries:
+### Summary of playtest feedback (Google Forms + observation)
+Overall, testers reacted positively to the core idea once they understood the loop:
+- **Positive**: “The concept was really clear” and the prototype has strong **audio feedback**.
+- **Friction (onboarding)**: some players were initially confused about **where to find the current order**.
+- **Friction (soda process)**: the **Water → Flavor → Mix** sequence was not always obvious without prior explanation.
 
-| Tester | Date | Completed an order? | Biggest friction | Surprise moment | Change made after |
-|-------:|------|----------------------|------------------|-----------------|------------------|
-| 01 | YYYY-MM-DD | Yes/No | Buttons hard to click | Mixed too early | Enlarged button collider |
-| 02 | YYYY-MM-DD | Yes/No | Couldn’t read states | Wrong delivery | Improved visuals + HUD |
-| 03 | YYYY-MM-DD | Yes/No | Didn’t notice order sign | — | Repositioned order sign |
+**Changes applied / planned based on feedback**
+- **Order sign readability**: increase contrast (background/color) so the order is noticeable immediately.
+- **Soda clarity**: add a small step hint near the soda machine (e.g., “1) Water 2) Flavor 3) Mix”) to communicate the process visually.
+- **Sandbox onboarding**: keep the discovery-based start, but ensure the main goal UI (order sign) is unmissable.
 
 ### Why playtests mattered (impact on the final build)
 The final version became more sandbox-readable and less brittle because the feedback forced improvements in:
@@ -308,4 +343,9 @@ The final version became more sandbox-readable and less brittle because the feed
 - **interaction reliability** (colliders/raycast blocking fixes),
 - **feedback loop** (audio + customer reactions),
 - and **iterability** (wash station enabling fast recovery).
+
+---
+
+## itch.io Link
+**Game link (itch.io)**: (paste link)
 
