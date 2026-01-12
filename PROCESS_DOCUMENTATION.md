@@ -1,3 +1,5 @@
+## SandBoxe
+
 ## Yago Phellipe Matos Lopes — 588542
 
 ## Project Documentation (Process + Sandbox Rationale)
@@ -198,6 +200,17 @@ This makes the sandbox readable even without heavy UI.
 
 ---
 
+## Screenshots (2)
+Screenshots are stored in `Assets/`:
+
+#### 1) Overview of the bar layout (stations + customer + delivery)
+![Bar overview](Assets/image1.png)
+
+#### 2) Order sign showing a request (e.g., Soda Passion)
+![Order sign](Assets/image2.png)
+
+---
+
 ## Technical notes (framework usage + small extensions)
 Most logic is implemented using framework components, UnityEvents, trigger gating, and inspector configuration:
 - `ConditionalTrigger` for validation and gating
@@ -212,16 +225,87 @@ These extensions were used to preserve the “no hardcoded single object” limi
 
 ---
 
-## Playtests and iteration (TO DO / to be documented)
-To fully meet the “Sufficient” sandbox design requirement, this prototype still needs:
-- At least **10 playtests**
-- Documented feedback
-- Documented changes made based on that feedback
+## Playtests & iteration (how tests were executed and applied)
+This prototype was iterated through short, informal playtests focused on clarity of goals, interaction flow, and state readability.
 
-A recommended structure for the playtest log:
-- Player ID / date
-- What they tried (freeform)
-- Confusions/frictions encountered
-- Fun moments / surprising outcomes
-- Changes applied after the test
+### Playtest form link (Google Forms)
+Paste your Google Forms link here:
+
+- **Form link**: `https://forms.gle/P8kCTSW9Scyn8pfh9`
+
+### Playtest method (how it was executed)
+- **Format**: in-person or screen-shared session
+- **Duration per tester**: ~5–10 minutes
+- **Instruction**: minimal (players were first asked to try without explanation)
+- **Data capture**: Google Forms questionnaire + brief notes taken during observation
+- **What was measured**:
+  - whether players understood the order/request,
+  - whether the station layout and interactions were discoverable,
+  - whether feedback (visual + audio) was enough to self-correct,
+  - and which steps created friction (buttons, sockets, timing, delivery).
+
+### Questionnaire (Google Forms)
+The playtest questionnaire used a mix of multiple choice, Likert scales, and free-text:
+- Player experience level with sandbox/physics games (multiple choice)
+- Clarity of goal without explanation (1–5)
+- Which actions they completed (checkbox list)
+- Clarity of container visual states (1–5)
+- Helpfulness of audio cues (1–5)
+- Biggest confusion point (multiple choice)
+- Friction points (checkboxes)
+- “Sandbox feel” (1–5)
+- Surprising/funny moment (short answer)
+- One improvement suggestion (paragraph)
+
+### Key feedback themes (what testers reported)
+#### Theme 1 — “Everything looks like blocks, I can’t tell states apart”
+Early versions used mostly primitive shapes (cubes/cylinders) with minimal differentiation. Multiple testers reported confusion such as:
+- “I can’t tell if the drink is ready.”
+- “Beer and soda look too similar.”
+- “I’m not sure what changed after pressing a button.”
+
+**Change applied**
+- Replaced/updated container visuals and added clearer liquid visuals per state.
+- Increased visual contrast between states (different colors/materials).
+- Added on-screen state HUD (state label) for clarity during testing.
+
+#### Theme 2 — “Buttons don’t work unless I’m extremely close / aiming is unclear”
+Some testers struggled to trigger button interactions consistently.
+
+**Change applied**
+- Increased clickable hitbox areas (larger colliders for buttons).
+- Removed colliders that were blocking raycasts (machine colliders overlapping buttons).
+- Kept interaction areas physically readable (buttons slightly protruding).
+
+#### Theme 3 — “I didn’t understand why I failed delivery”
+Players sometimes delivered the wrong drink and were unsure what went wrong.
+
+**Change applied**
+- Added clear success/failure audio feedback.
+- Added customer emotion states (Happy/Sad) as immediate feedback.
+- Ensured the order sign updates reliably and is always visible.
+
+#### Theme 4 — “Multi-step soda is fun, but I want to know which step I’m on”
+Players enjoyed the process, but wanted clearer step feedback.
+
+**Change applied**
+- Added timed process sounds for water/flavor/mix steps.
+- Added explicit flavor variants (Lemon/Orange/Passion) and distinct visual states.
+- Implemented a consistent “processing” state during timed steps.
+
+### Example playtest log (template)
+Below is a suggested table format you can paste into a separate doc or keep here. Replace with your real tester entries:
+
+| Tester | Date | Completed an order? | Biggest friction | Surprise moment | Change made after |
+|-------:|------|----------------------|------------------|-----------------|------------------|
+| 01 | YYYY-MM-DD | Yes/No | Buttons hard to click | Mixed too early | Enlarged button collider |
+| 02 | YYYY-MM-DD | Yes/No | Couldn’t read states | Wrong delivery | Improved visuals + HUD |
+| 03 | YYYY-MM-DD | Yes/No | Didn’t notice order sign | — | Repositioned order sign |
+
+### Why playtests mattered (impact on the final build)
+The final version became more sandbox-readable and less brittle because the feedback forced improvements in:
+- **state legibility** (visual differentiation and explicit state display),
+- **interaction reliability** (colliders/raycast blocking fixes),
+- **feedback loop** (audio + customer reactions),
+- and **iterability** (wash station enabling fast recovery).
 
